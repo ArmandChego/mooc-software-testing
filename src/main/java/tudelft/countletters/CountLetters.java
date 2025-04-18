@@ -14,7 +14,7 @@ public class CountLetters {
             last = str.charAt(i);
         }
 
-        if(last == 'x' || last == 's')
+        if(last == 'x' || last == 's' || last == 'r')
             words++;
 
         return words;
