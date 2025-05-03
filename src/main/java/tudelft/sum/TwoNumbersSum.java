@@ -3,29 +3,29 @@ package tudelft.sum;
 import java.util.ArrayList;
 import java.util.Collections;
 
-// Source: https://leetcode.com/problems/add-two-numbers/description/
 class TwoNumbersSum {
 
     public ArrayList<Integer> addTwoNumbers(ArrayList<Integer> first, ArrayList<Integer> second) {
-        Collections.reverse(first);
-        Collections.reverse(second);
-
         int complement = 0;
         ArrayList<Integer> result = new ArrayList<>();
 
-        for(int i = 0; i < Math.max(first.size(), second.size()); i++){
-            int firstVal = i < first.size() ? first.get(i) : 0;
-            int secondVal = i < second.size() ? second.get(i) : 0;
+        // Se empieza desde el ultimo digito de ambos numeros
+        int i = first.size() - 1;
+        int j = second.size() - 1;
+
+        while (i >= 0 || j >= 0 || complement != 0) {
+            int firstVal = (i >= 0) ? first.get(i--) : 0; // Si hay elementos en 'first', se toma el valor, sino 0
+            int secondVal = (j >= 0) ? second.get(j--) : 0; // Si hay elementos en 'second', se toma el valor, sino 0
+
             int total = firstVal + secondVal + complement;
-            complement = 0;
-            if (total >= 10){
-                complement = 1;
-                total -= 10;
-            }
-            result.add(i, total);
+            complement = total / 10;
+            result.add(total % 10); // Se guarda solo el digito menos significativo
+
         }
 
+        // El resultado esta en orden inverso, por lo que se invierte la lista
         Collections.reverse(result);
+
         return result;
     }
 }
