@@ -15,7 +15,7 @@ public class Mirror {
                 begin++;
                 end--;
             } else {
-                break;  // Terminar si no coinciden
+                break;  // Terminar en caso no coinciden
             }
         }
 

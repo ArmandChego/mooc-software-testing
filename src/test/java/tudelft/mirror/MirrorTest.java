@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MirrorTest {
 
+    // Pruebas
     @Test
     public void testMirrorEnds_ShortReflection() {
         Mirror mirror = new Mirror();
