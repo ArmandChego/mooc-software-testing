@@ -7,15 +7,23 @@ public class Mirror {
 
         int begin = 0;
         int end = string.length() - 1;
-        for (; begin < end; begin++, end--) {
+
+        // Recorrer hasta que los caracteres coincidan de extremo a extremo
+        while (begin < end) {
             if (string.charAt(begin) == string.charAt(end)) {
-                mirror += String.valueOf(string.charAt(end));
-            }
-            else {
-                break;
+                mirror += string.charAt(begin);
+                begin++;
+                end--;
+            } else {
+                break;  // Terminar si no coinciden
             }
         }
 
-        return begin == end ? string : mirror;
+        // Si los extremos son iguales y se llega al centro
+        if (begin == end) {
+            mirror += string.charAt(begin);  // Agregar el caracter central una vez
+        }
+
+        return mirror;
     }
 }
